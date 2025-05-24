@@ -4,7 +4,8 @@
   "info": {
     "singularName": "book-visit",
     "pluralName": "book-visits",
-    "displayName": "Book-Visit"
+    "displayName": "Book-Visit",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,7 @@
   "attributes": {
     "Bookvisit": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "contact.contact-details"
     },
     "name": {
