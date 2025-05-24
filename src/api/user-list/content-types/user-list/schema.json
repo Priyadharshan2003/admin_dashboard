@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_lists",
+  "info": {
+    "singularName": "user-list",
+    "pluralName": "user-lists",
+    "displayName": "UserList"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "roles": {
+      "type": "enumeration",
+      "enum": [
+        "guest",
+        "client",
+        "manager"
+      ]
+    },
+    "picture": {
+      "type": "string",
+      "default": "https://i.pinimg.com/736x/36/50/2d/36502d663186cfbf03b14d399aacbf22.jpg"
+    }
+  }
+}
