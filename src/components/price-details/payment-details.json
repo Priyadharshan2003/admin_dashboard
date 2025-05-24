@@ -1,0 +1,56 @@
+{
+  "collectionName": "components_price_details_payment_details",
+  "info": {
+    "displayName": "payment-details"
+  },
+  "options": {},
+  "attributes": {
+    "payment_method": {
+      "type": "enumeration",
+      "enum": [
+        "cash",
+        "cheque",
+        "online",
+        "bank_transfer",
+        "emi",
+        "loan"
+      ]
+    },
+    "transaction_id": {
+      "type": "string"
+    },
+    "reference_number": {
+      "type": "string"
+    },
+    "bank_name": {
+      "type": "string"
+    },
+    "cheque_number": {
+      "type": "string"
+    },
+    "payment_date": {
+      "type": "date"
+    },
+    "payment_status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "processing",
+        "completed",
+        "failed",
+        "refunded"
+      ]
+    },
+    "payment_proof": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "payment_notes": {
+      "type": "blocks"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_project_project_details",
+  "info": {
+    "displayName": "project-details"
+  },
+  "options": {},
+  "attributes": {
+    "project_phase": {
+      "type": "enumeration",
+      "enum": [
+        "planning",
+        "approval",
+        "construction",
+        "nearing_completion",
+        "completed"
+      ]
+    },
+    "approval_status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "conditional"
+      ]
+    },
+    "approvals": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.document-set"
+    },
+    "amenities": {
+      "type": "json"
+    },
+    "project_highlights": {
+      "type": "json"
+    },
+    "nearby_facilities": {
+      "type": "json"
+    },
+    "connectivity": {
+      "type": "json"
+    },
+    "possession_date": {
+      "type": "date"
+    },
+    "rera_number": {
+      "type": "string"
+    },
+    "builder_name": {
+      "type": "string"
+    }
+  }
+}

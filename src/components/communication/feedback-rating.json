@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_communication_feedback_ratings",
+  "info": {
+    "displayName": "feedback-rating"
+  },
+  "options": {},
+  "attributes": {
+    "overall_rating": {
+      "type": "integer",
+      "default": 5
+    },
+    "service_rating": {
+      "type": "integer",
+      "default": 5
+    },
+    "communication_rating": {
+      "type": "integer",
+      "default": 5
+    },
+    "facility_rating": {
+      "type": "integer",
+      "default": 5
+    },
+    "feedback_comments": {
+      "type": "blocks"
+    },
+    "suggestions": {
+      "type": "blocks"
+    },
+    "recommend_to_others": {
+      "type": "boolean"
+    },
+    "feedback_date": {
+      "type": "datetime"
+    },
+    "follow_up_required": {
+      "type": "boolean"
+    }
+  }
+}

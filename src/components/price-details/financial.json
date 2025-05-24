@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_price_details_financials",
+  "info": {
+    "displayName": "financial"
+  },
+  "options": {},
+  "attributes": {
+    "base_price": {
+      "type": "decimal",
+      "required": true
+    },
+    "current_price": {
+      "type": "decimal",
+      "required": true
+    },
+    "discount_amount": {
+      "type": "decimal",
+      "required": false
+    },
+    "discount_percentage": {
+      "type": "decimal"
+    },
+    "price_per_sqft": {
+      "type": "decimal"
+    },
+    "registration_charges": {
+      "type": "decimal"
+    },
+    "maintenance_charges": {
+      "type": "decimal"
+    },
+    "other_charges": {
+      "type": "decimal"
+    },
+    "total_amount": {
+      "type": "decimal"
+    },
+    "price_valid_until": {
+      "type": "date"
+    }
+  }
+}

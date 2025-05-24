@@ -1,0 +1,63 @@
+{
+  "collectionName": "components_location_plot_specifications",
+  "info": {
+    "displayName": "plot-specifications"
+  },
+  "options": {},
+  "attributes": {
+    "plot_size": {
+      "type": "string"
+    },
+    "built_up_area": {
+      "type": "decimal"
+    },
+    "carpet_area": {
+      "type": "decimal"
+    },
+    "plot_type": {
+      "type": "enumeration",
+      "enum": [
+        "residential",
+        "commercial",
+        "industrial"
+      ]
+    },
+    "facing": {
+      "type": "enumeration",
+      "enum": [
+        "north",
+        "south",
+        "east",
+        "west",
+        "north_east",
+        "north_west",
+        "south_east",
+        "south_west"
+      ]
+    },
+    "corner_plot": {
+      "type": "boolean",
+      "default": false
+    },
+    "park_facing": {
+      "type": "boolean",
+      "default": false
+    },
+    "main_road_facing": {
+      "type": "boolean",
+      "default": false
+    },
+    "road_width": {
+      "type": "integer"
+    },
+    "plot_boundaries": {
+      "type": "json"
+    },
+    "soil_type": {
+      "type": "string"
+    },
+    "elevation": {
+      "type": "decimal"
+    }
+  }
+}

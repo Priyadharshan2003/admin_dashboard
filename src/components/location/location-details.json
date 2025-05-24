@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_location_location_details",
+  "info": {
+    "displayName": "location-details",
+    "icon": "pinMap"
+  },
+  "options": {},
+  "attributes": {
+    "coordinates": {
+      "type": "json"
+    },
+    "accuracy": {
+      "type": "decimal"
+    },
+    "altitude": {
+      "type": "decimal"
+    },
+    "timestamp": {
+      "type": "datetime"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "contact.address"
+    },
+    "location_type": {
+      "type": "enumeration",
+      "enum": [
+        "home",
+        "office",
+        "site",
+        "other"
+      ]
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "collectionName": "components_security_camera_configurations",
+  "info": {
+    "displayName": "camera-configuration"
+  },
+  "options": {},
+  "attributes": {
+    "camera_name": {
+      "type": "string"
+    },
+    "ip_address": {
+      "type": "string"
+    },
+    "port": {
+      "type": "integer"
+    },
+    "username": {
+      "type": "string",
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "private": true,
+      "required": true
+    },
+    "camera_type": {
+      "type": "enumeration",
+      "enum": [
+        "fixed",
+        "ptz",
+        "dome",
+        "bullet"
+      ]
+    },
+    "resolution": {
+      "type": "enumeration",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "night_vision": {
+      "type": "boolean",
+      "default": false
+    },
+    "motion_detection": {
+      "type": "boolean",
+      "default": true
+    },
+    "recording_enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "stream_url": {
+      "type": "string"
+    },
+    "camera_status": {
+      "type": "enumeration",
+      "enum": [
+        "online",
+        "offline",
+        "maintenance"
+      ]
+    }
+  }
+}

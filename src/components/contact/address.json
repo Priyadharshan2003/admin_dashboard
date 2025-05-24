@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_contact_addresses",
+  "info": {
+    "displayName": "address",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "street_address": {
+      "type": "string",
+      "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "state": {
+      "type": "string",
+      "required": true
+    },
+    "postal_code": {
+      "type": "string",
+      "required": true
+    },
+    "country": {
+      "type": "string",
+      "default": "India"
+    },
+    "landmark": {
+      "type": "string"
+    },
+    "coordinates": {
+      "type": "json"
+    },
+    "address_type": {
+      "type": "enumeration",
+      "enum": [
+        "residential",
+        "commercial",
+        "office",
+        "site"
+      ]
+    }
+  }
+}

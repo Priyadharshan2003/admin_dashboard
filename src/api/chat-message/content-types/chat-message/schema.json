@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chat_messages",
+  "info": {
+    "singularName": "chat-message",
+    "pluralName": "chat-messages",
+    "displayName": "chat-message"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "sender": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::notification.notification",
+      "inversedBy": "chat_messages"
+    },
+    "reciver": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::notification.notification",
+      "inversedBy": "chat_messages"
+    },
+    "message": {
+      "type": "blocks",
+      "required": true
+    },
+    "message_type": {
+      "type": "enumeration",
+      "enum": [
+        "text",
+        "image ",
+        "document",
+        "voice",
+        "location"
+      ],
+      "required": true
+    },
+    "attachment": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    },
+    "read_status": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "read_at": {
+      "type": "datetime",
+      "required": true
+    },
+    "reply_to": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::notification.notification",
+      "inversedBy": "chat_messages"
+    },
+    "message_status": {
+      "type": "enumeration",
+      "enum": [
+        "sent",
+        "delivered",
+        "failed"
+      ],
+      "required": true
+    },
+    "edited": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "edited_at": {
+      "type": "datetime",
+      "required": true
+    }
+  }
+}

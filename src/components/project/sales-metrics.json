@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_project_sales_metrics",
+  "info": {
+    "displayName": "sales-metrics"
+  },
+  "options": {},
+  "attributes": {
+    "total_inventory": {
+      "type": "integer"
+    },
+    "sold_units": {
+      "type": "integer",
+      "default": 0
+    },
+    "available_units": {
+      "type": "integer"
+    },
+    "blocked_units": {
+      "type": "integer",
+      "default": 0
+    },
+    "sales_velocity": {
+      "type": "decimal"
+    },
+    "average_selling_price": {
+      "type": "integer"
+    },
+    "total_revenue": {
+      "type": "decimal",
+      "default": 0
+    },
+    "target_revenue": {
+      "type": "decimal"
+    },
+    "sales_percentage": {
+      "type": "decimal",
+      "default": 0
+    },
+    "last_updated": {
+      "type": "datetime"
+    }
+  }
+}

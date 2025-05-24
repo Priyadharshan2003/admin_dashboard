@@ -1,0 +1,58 @@
+{
+  "collectionName": "components_media_document_sets",
+  "info": {
+    "displayName": "document-set",
+    "icon": "file"
+  },
+  "options": {},
+  "attributes": {
+    "document_type": {
+      "type": "enumeration",
+      "enum": [
+        "legal",
+        "technical",
+        "financial",
+        "identity",
+        "agreement",
+        "other"
+      ]
+    },
+    "document_name": {
+      "type": "string",
+      "required": true
+    },
+    "document_file": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "document_number": {
+      "type": "string"
+    },
+    "issue_date": {
+      "type": "date"
+    },
+    "expiry_date": {
+      "type": "date"
+    },
+    "issuing_authority": {
+      "type": "string"
+    },
+    "verification_status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "verified",
+        "rejected"
+      ]
+    },
+    "document_notes": {
+      "type": "blocks"
+    }
+  }
+}
