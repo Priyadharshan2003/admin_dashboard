@@ -1,0 +1,107 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notifications",
+  "info": {
+    "singularName": "notification",
+    "pluralName": "notifications",
+    "displayName": "notification",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "string",
+      "required": true
+    },
+    "recipient": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "notification"
+    },
+    "notification_type": {
+      "type": "enumeration",
+      "enum": [
+        "info",
+        "warning",
+        "success",
+        " error",
+        "marketing",
+        "visit_reminder",
+        "payment_due"
+      ],
+      "required": true
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "urgent"
+      ],
+      "required": true
+    },
+    "target_roles": {
+      "type": "json",
+      "required": true
+    },
+    "target_projects": {
+      "type": "json",
+      "required": true
+    },
+    "read_status": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "read_at": {
+      "type": "datetime",
+      "required": true
+    },
+    "scheduled_at": {
+      "type": "datetime",
+      "required": true
+    },
+    "sent_at": {
+      "type": "datetime",
+      "required": true
+    },
+    "delivery_status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "sent",
+        "delivered",
+        "failed"
+      ],
+      "required": true
+    },
+    "action_url": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "chat_messages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::chat-message.chat-message",
+      "mappedBy": "reply_to"
+    }
+  }
+}

@@ -373,6 +373,133 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiChatMessageChatMessage extends Struct.CollectionTypeSchema {
+  collectionName: 'chat_messages';
+  info: {
+    displayName: 'chat-message';
+    pluralName: 'chat-messages';
+    singularName: 'chat-message';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    attachment: Schema.Attribute.Media<'images' | 'files'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    edited: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    edited_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::chat-message.chat-message'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    message_status: Schema.Attribute.Enumeration<
+      ['sent', 'delivered', 'failed']
+    > &
+      Schema.Attribute.Required;
+    message_type: Schema.Attribute.Enumeration<
+      ['text', 'image ', 'document', 'voice', 'location']
+    > &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    read_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    read_status: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    reciver: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::notification.notification'
+    >;
+    reply_to: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::notification.notification'
+    >;
+    sender: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::notification.notification'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNotificationNotification
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'notifications';
+  info: {
+    description: '';
+    displayName: 'notification';
+    pluralName: 'notifications';
+    singularName: 'notification';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    action_url: Schema.Attribute.String & Schema.Attribute.Required;
+    chat_messages: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::chat-message.chat-message'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    delivery_status: Schema.Attribute.Enumeration<
+      ['pending', 'sent', 'delivered', 'failed']
+    > &
+      Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notification.notification'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.String & Schema.Attribute.Required;
+    notification_type: Schema.Attribute.Enumeration<
+      [
+        'info',
+        'warning',
+        'success',
+        ' error',
+        'marketing',
+        'visit_reminder',
+        'payment_due',
+      ]
+    > &
+      Schema.Attribute.Required;
+    priority: Schema.Attribute.Enumeration<
+      ['low', 'medium', 'high', 'urgent']
+    > &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    read_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    read_status: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    recipient: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    scheduled_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    sent_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    target_projects: Schema.Attribute.JSON & Schema.Attribute.Required;
+    target_roles: Schema.Attribute.JSON & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPlotPlot extends Struct.CollectionTypeSchema {
   collectionName: 'plots';
   info: {
@@ -954,6 +1081,10 @@ export interface PluginUsersPermissionsUser
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
+    notification: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::notification.notification'
+    >;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
@@ -988,6 +1119,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::chat-message.chat-message': ApiChatMessageChatMessage;
+      'api::notification.notification': ApiNotificationNotification;
       'api::plot.plot': ApiPlotPlot;
       'api::project.project': ApiProjectProject;
       'api::user-list.user-list': ApiUserListUserList;
