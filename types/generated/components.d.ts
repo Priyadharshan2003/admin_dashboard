@@ -58,6 +58,85 @@ export interface LocationLocationDetails extends Struct.ComponentSchema {
   };
 }
 
+export interface LocationPlotSpecifications extends Struct.ComponentSchema {
+  collectionName: 'components_location_plot_specifications';
+  info: {
+    displayName: 'plot-specifications';
+  };
+  attributes: {
+    built_up_area: Schema.Attribute.Decimal;
+    carpet_area: Schema.Attribute.Decimal;
+    corner_plot: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    elevation: Schema.Attribute.Decimal;
+    facing: Schema.Attribute.Enumeration<
+      [
+        'north',
+        'south',
+        'east',
+        'west',
+        'north_east',
+        'north_west',
+        'south_east',
+        'south_west',
+      ]
+    >;
+    main_road_facing: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    park_facing: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    plot_boundaries: Schema.Attribute.JSON;
+    plot_size: Schema.Attribute.String;
+    plot_type: Schema.Attribute.Enumeration<
+      ['residential', 'commercial', 'industrial']
+    >;
+    road_width: Schema.Attribute.Integer;
+    soil_type: Schema.Attribute.String;
+  };
+}
+
+export interface MediaDocumentSet extends Struct.ComponentSchema {
+  collectionName: 'components_media_document_sets';
+  info: {
+    displayName: 'document-set';
+    icon: 'file';
+  };
+  attributes: {
+    document_file: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    document_name: Schema.Attribute.String & Schema.Attribute.Required;
+    document_notes: Schema.Attribute.Blocks;
+    document_number: Schema.Attribute.String;
+    document_type: Schema.Attribute.Enumeration<
+      ['legal', 'technical', 'financial', 'identity', 'agreement', 'other']
+    >;
+    expiry_date: Schema.Attribute.Date;
+    issue_date: Schema.Attribute.Date;
+    issuing_authority: Schema.Attribute.String;
+    verification_status: Schema.Attribute.Enumeration<
+      ['pending', 'verified', 'rejected']
+    >;
+  };
+}
+
+export interface MediaMediaGallery extends Struct.ComponentSchema {
+  collectionName: 'components_media_media_galleries';
+  info: {
+    displayName: 'media-gallery';
+  };
+  attributes: {
+    documents: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    featured_image: Schema.Attribute.Media<'images' | 'files'>;
+    gallery_description: Schema.Attribute.Blocks;
+    gallery_title: Schema.Attribute.String;
+    images: Schema.Attribute.Media<'files' | 'images', true>;
+    videos: Schema.Attribute.Media<'files' | 'videos', true>;
+    virtual_tour_url: Schema.Attribute.String;
+  };
+}
+
 export interface PriceDetailsFinancial extends Struct.ComponentSchema {
   collectionName: 'components_price_details_financials';
   info: {
@@ -147,6 +226,9 @@ declare module '@strapi/strapi' {
       'contact.address': ContactAddress;
       'contact.contact-details': ContactContactDetails;
       'location.location-details': LocationLocationDetails;
+      'location.plot-specifications': LocationPlotSpecifications;
+      'media.document-set': MediaDocumentSet;
+      'media.media-gallery': MediaMediaGallery;
       'price-details.financial': PriceDetailsFinancial;
       'price-details.payment-details': PriceDetailsPaymentDetails;
       'system.audit-trail': SystemAuditTrail;
