@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_contact_info_contact_details",
+  "collectionName": "components_contact_contact_details",
   "info": {
     "displayName": "contact-details",
-    "icon": "information"
+    "icon": "phone"
   },
   "options": {},
   "attributes": {
@@ -11,12 +11,10 @@
       "required": true
     },
     "secondary_phone": {
-      "type": "string",
-      "required": false
+      "type": "string"
     },
     "email": {
-      "type": "email",
-      "required": true
+      "type": "email"
     },
     "whatsapp_number": {
       "type": "string"
@@ -28,7 +26,6 @@
         "email",
         "whatsapp"
       ],
-      "required": true,
       "default": "phone"
     },
     "contact_notes": {

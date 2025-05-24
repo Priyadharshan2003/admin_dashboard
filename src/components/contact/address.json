@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_address_addresses",
+  "collectionName": "components_contact_addresses",
   "info": {
-    "displayName": "Address",
-    "icon": "house"
+    "displayName": "address",
+    "icon": "briefcase"
   },
   "options": {},
   "attributes": {
@@ -24,16 +24,13 @@
     },
     "country": {
       "type": "string",
-      "default": "India",
-      "required": true
+      "default": "India"
     },
     "landmark": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "coordinates": {
-      "type": "json",
-      "required": false
+      "type": "json"
     },
     "address_type": {
       "type": "enumeration",
@@ -42,8 +39,7 @@
         "commercial",
         "office",
         "site"
-      ],
-      "required": true
+      ]
     }
   }
 }

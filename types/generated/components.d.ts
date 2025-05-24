@@ -1,45 +1,60 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface AddressAddress extends Struct.ComponentSchema {
-  collectionName: 'components_address_addresses';
+export interface ContactAddress extends Struct.ComponentSchema {
+  collectionName: 'components_contact_addresses';
   info: {
-    displayName: 'Address';
-    icon: 'house';
+    displayName: 'address';
+    icon: 'briefcase';
   };
   attributes: {
     address_type: Schema.Attribute.Enumeration<
       ['residential', 'commercial', 'office', 'site']
-    > &
-      Schema.Attribute.Required;
+    >;
     city: Schema.Attribute.String & Schema.Attribute.Required;
     coordinates: Schema.Attribute.JSON;
-    country: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'India'>;
-    landmark: Schema.Attribute.String & Schema.Attribute.Required;
+    country: Schema.Attribute.String & Schema.Attribute.DefaultTo<'India'>;
+    landmark: Schema.Attribute.String;
     postal_code: Schema.Attribute.String & Schema.Attribute.Required;
     state: Schema.Attribute.String & Schema.Attribute.Required;
     street_address: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-export interface ContactInfoContactDetails extends Struct.ComponentSchema {
-  collectionName: 'components_contact_info_contact_details';
+export interface ContactContactDetails extends Struct.ComponentSchema {
+  collectionName: 'components_contact_contact_details';
   info: {
     displayName: 'contact-details';
-    icon: 'information';
+    icon: 'phone';
   };
   attributes: {
     contact_notes: Schema.Attribute.Blocks;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    email: Schema.Attribute.Email;
     preferred_contact_method: Schema.Attribute.Enumeration<
       ['phone', 'email', 'whatsapp']
     > &
-      Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'phone'>;
     primary_phone: Schema.Attribute.String & Schema.Attribute.Required;
     secondary_phone: Schema.Attribute.String;
     whatsapp_number: Schema.Attribute.String;
+  };
+}
+
+export interface LocationLocationDetails extends Struct.ComponentSchema {
+  collectionName: 'components_location_location_details';
+  info: {
+    displayName: 'location-details';
+    icon: 'pinMap';
+  };
+  attributes: {
+    accuracy: Schema.Attribute.Decimal;
+    address: Schema.Attribute.Component<'contact.address', false>;
+    altitude: Schema.Attribute.Decimal;
+    coordinates: Schema.Attribute.JSON;
+    location_type: Schema.Attribute.Enumeration<
+      ['home', 'office', 'site', 'other']
+    >;
+    timestamp: Schema.Attribute.DateTime;
+    verified: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
   };
 }
 
@@ -129,8 +144,9 @@ export interface SystemStatusTracking extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'address.address': AddressAddress;
-      'contact-info.contact-details': ContactInfoContactDetails;
+      'contact.address': ContactAddress;
+      'contact.contact-details': ContactContactDetails;
+      'location.location-details': LocationLocationDetails;
       'price-details.financial': PriceDetailsFinancial;
       'price-details.payment-details': PriceDetailsPaymentDetails;
       'system.audit-trail': SystemAuditTrail;
