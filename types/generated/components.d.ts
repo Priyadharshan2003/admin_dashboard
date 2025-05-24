@@ -66,18 +66,16 @@ export interface ContactAddress extends Struct.ComponentSchema {
 export interface ContactContactDetails extends Struct.ComponentSchema {
   collectionName: 'components_contact_contact_details';
   info: {
+    description: '';
     displayName: 'contact-details';
     icon: 'phone';
   };
   attributes: {
-    contact_notes: Schema.Attribute.Blocks;
-    email: Schema.Attribute.Email;
     preferred_contact_method: Schema.Attribute.Enumeration<
-      ['phone', 'email', 'whatsapp']
+      ['phone', 'whatsapp']
     > &
       Schema.Attribute.DefaultTo<'phone'>;
     primary_phone: Schema.Attribute.String & Schema.Attribute.Required;
-    secondary_phone: Schema.Attribute.String;
     whatsapp_number: Schema.Attribute.String;
   };
 }

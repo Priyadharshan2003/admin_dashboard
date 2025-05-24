@@ -2,19 +2,14 @@
   "collectionName": "components_contact_contact_details",
   "info": {
     "displayName": "contact-details",
-    "icon": "phone"
+    "icon": "phone",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "primary_phone": {
       "type": "string",
       "required": true
-    },
-    "secondary_phone": {
-      "type": "string"
-    },
-    "email": {
-      "type": "email"
     },
     "whatsapp_number": {
       "type": "string"
@@ -23,13 +18,9 @@
       "type": "enumeration",
       "enum": [
         "phone",
-        "email",
         "whatsapp"
       ],
       "default": "phone"
-    },
-    "contact_notes": {
-      "type": "blocks"
     }
   }
 }

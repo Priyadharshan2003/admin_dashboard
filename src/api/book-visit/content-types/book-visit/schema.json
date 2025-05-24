@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "book_visits",
+  "info": {
+    "singularName": "book-visit",
+    "pluralName": "book-visits",
+    "displayName": "Book-Visit"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Bookvisit": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contact.contact-details"
+    },
+    "name": {
+      "type": "string"
+    },
+    "feedback_users": {
+      "type": "component",
+      "repeatable": true,
+      "component": "communication.feedback-rating"
+    }
+  }
+}

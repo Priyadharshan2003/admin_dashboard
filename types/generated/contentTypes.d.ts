@@ -373,6 +373,39 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBookVisitBookVisit extends Struct.CollectionTypeSchema {
+  collectionName: 'book_visits';
+  info: {
+    displayName: 'Book-Visit';
+    pluralName: 'book-visits';
+    singularName: 'book-visit';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Bookvisit: Schema.Attribute.Component<'contact.contact-details', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    feedback_users: Schema.Attribute.Component<
+      'communication.feedback-rating',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::book-visit.book-visit'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiChatMessageChatMessage extends Struct.CollectionTypeSchema {
   collectionName: 'chat_messages';
   info: {
@@ -1119,6 +1152,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::book-visit.book-visit': ApiBookVisitBookVisit;
       'api::chat-message.chat-message': ApiChatMessageChatMessage;
       'api::notification.notification': ApiNotificationNotification;
       'api::plot.plot': ApiPlotPlot;
