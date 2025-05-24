@@ -376,6 +376,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiBookVisitBookVisit extends Struct.CollectionTypeSchema {
   collectionName: 'book_visits';
   info: {
+    description: '';
     displayName: 'Book-Visit';
     pluralName: 'book-visits';
     singularName: 'book-visit';
@@ -384,7 +385,7 @@ export interface ApiBookVisitBookVisit extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Bookvisit: Schema.Attribute.Component<'contact.contact-details', true>;
+    Bookvisit: Schema.Attribute.Component<'contact.contact-details', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
