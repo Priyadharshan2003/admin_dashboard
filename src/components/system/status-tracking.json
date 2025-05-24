@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_system_status_trackings",
+  "info": {
+    "displayName": "status-tracking",
+    "icon": "stack"
+  },
+  "options": {},
+  "attributes": {
+    "current_status": {
+      "type": "string",
+      "required": true
+    },
+    "previous_status": {
+      "type": "string"
+    },
+    "status_changed_at": {
+      "type": "datetime"
+    },
+    "status_changed_by": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::chat-message.chat-message"
+    },
+    "status_reason": {
+      "type": "blocks"
+    },
+    "next_action_required": {
+      "type": "string"
+    },
+    "next_action_date": {
+      "type": "datetime"
+    },
+    "auto_status_change": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

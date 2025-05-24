@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_contact_info_contact_details",
+  "info": {
+    "displayName": "contact-details",
+    "icon": "information"
+  },
+  "options": {},
+  "attributes": {
+    "primary_phone": {
+      "type": "string",
+      "required": true
+    },
+    "secondary_phone": {
+      "type": "string",
+      "required": false
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "whatsapp_number": {
+      "type": "string"
+    },
+    "preferred_contact_method": {
+      "type": "enumeration",
+      "enum": [
+        "phone",
+        "email",
+        "whatsapp"
+      ],
+      "required": true,
+      "default": "phone"
+    },
+    "contact_notes": {
+      "type": "blocks"
+    }
+  }
+}

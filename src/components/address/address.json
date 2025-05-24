@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_address_addresses",
+  "info": {
+    "displayName": "Address",
+    "icon": "house"
+  },
+  "options": {},
+  "attributes": {
+    "street_address": {
+      "type": "string",
+      "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "state": {
+      "type": "string",
+      "required": true
+    },
+    "postal_code": {
+      "type": "string",
+      "required": true
+    },
+    "country": {
+      "type": "string",
+      "default": "India",
+      "required": true
+    },
+    "landmark": {
+      "type": "string",
+      "required": true
+    },
+    "coordinates": {
+      "type": "json",
+      "required": false
+    },
+    "address_type": {
+      "type": "enumeration",
+      "enum": [
+        "residential",
+        "commercial",
+        "office",
+        "site"
+      ],
+      "required": true
+    }
+  }
+}
