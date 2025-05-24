@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_security_qr_code_details",
+  "info": {
+    "displayName": "qr-code-details"
+  },
+  "options": {},
+  "attributes": {
+    "qr_code_data": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "qr_code_type": {
+      "type": "enumeration",
+      "enum": [
+        "visit",
+        "permanent_access",
+        "parking",
+        "gate_entry"
+      ]
+    },
+    "generated_at": {
+      "type": "datetime"
+    },
+    "expires_at": {
+      "type": "datetime"
+    },
+    "usage_limit": {
+      "type": "integer"
+    },
+    "times_used": {
+      "type": "integer"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "access_level": {
+      "type": "enumeration",
+      "enum": [
+        "guest",
+        "client",
+        "manager",
+        "admin"
+      ]
+    },
+    "qr_metadata": {
+      "type": "json"
+    }
+  }
+}

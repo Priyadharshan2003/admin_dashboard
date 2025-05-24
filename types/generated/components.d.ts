@@ -221,6 +221,59 @@ export interface PriceDetailsPaymentDetails extends Struct.ComponentSchema {
   };
 }
 
+export interface SecurityCameraConfiguration extends Struct.ComponentSchema {
+  collectionName: 'components_security_camera_configurations';
+  info: {
+    displayName: 'camera-configuration';
+  };
+  attributes: {
+    camera_name: Schema.Attribute.String;
+    camera_status: Schema.Attribute.Enumeration<
+      ['online', 'offline', 'maintenance']
+    >;
+    camera_type: Schema.Attribute.Enumeration<
+      ['fixed', 'ptz', 'dome', 'bullet']
+    >;
+    ip_address: Schema.Attribute.String;
+    motion_detection: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    night_vision: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    password: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    port: Schema.Attribute.Integer;
+    recording_enabled: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    resolution: Schema.Attribute.Enumeration<['low', 'medium', 'high']>;
+    stream_url: Schema.Attribute.String;
+    username: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SecurityQrCodeDetails extends Struct.ComponentSchema {
+  collectionName: 'components_security_qr_code_details';
+  info: {
+    displayName: 'qr-code-details';
+  };
+  attributes: {
+    access_level: Schema.Attribute.Enumeration<
+      ['guest', 'client', 'manager', 'admin']
+    >;
+    expires_at: Schema.Attribute.DateTime;
+    generated_at: Schema.Attribute.DateTime;
+    is_active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    qr_code_data: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    qr_code_type: Schema.Attribute.Enumeration<
+      ['visit', 'permanent_access', 'parking', 'gate_entry']
+    >;
+    qr_metadata: Schema.Attribute.JSON;
+    times_used: Schema.Attribute.Integer;
+    usage_limit: Schema.Attribute.Integer;
+  };
+}
+
 export interface SystemAuditTrail extends Struct.ComponentSchema {
   collectionName: 'components_system_audit_trails';
   info: {
@@ -276,6 +329,8 @@ declare module '@strapi/strapi' {
       'media.media-gallery': MediaMediaGallery;
       'price-details.financial': PriceDetailsFinancial;
       'price-details.payment-details': PriceDetailsPaymentDetails;
+      'security.camera-configuration': SecurityCameraConfiguration;
+      'security.qr-code-details': SecurityQrCodeDetails;
       'system.audit-trail': SystemAuditTrail;
       'system.status-tracking': SystemStatusTracking;
     }
