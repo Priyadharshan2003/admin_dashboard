@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "plots",
+  "info": {
+    "singularName": "plot",
+    "pluralName": "plots",
+    "displayName": "plot"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "project": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::project.project",
+      "inversedBy": "plots"
+    },
+    "dimension": {
+      "type": "string"
+    },
+    "price": {
+      "type": "biginteger"
+    },
+    "priceLabel": {
+      "type": "string"
+    },
+    "facing": {
+      "type": "enumeration",
+      "enum": [
+        "East",
+        "West",
+        "North",
+        "South"
+      ]
+    },
+    "depth": {
+      "type": "integer"
+    },
+    "width": {
+      "type": "integer"
+    },
+    "stats": {
+      "type": "enumeration",
+      "enum": [
+        "Available",
+        "Sold",
+        "Advance"
+      ]
+    },
+    "latitude": {
+      "type": "decimal"
+    },
+    "longitude": {
+      "type": "decimal"
+    },
+    "amenities": {
+      "type": "json"
+    },
+    "imageUrl": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
