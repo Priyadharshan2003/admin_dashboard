@@ -221,6 +221,54 @@ export interface PriceDetailsPaymentDetails extends Struct.ComponentSchema {
   };
 }
 
+export interface ProjectProjectDetails extends Struct.ComponentSchema {
+  collectionName: 'components_project_project_details';
+  info: {
+    displayName: 'project-details';
+  };
+  attributes: {
+    amenities: Schema.Attribute.JSON;
+    approval_status: Schema.Attribute.Enumeration<
+      ['pending', 'approved', 'rejected', 'conditional']
+    >;
+    approvals: Schema.Attribute.Component<'media.document-set', true>;
+    builder_name: Schema.Attribute.String;
+    connectivity: Schema.Attribute.JSON;
+    nearby_facilities: Schema.Attribute.JSON;
+    possession_date: Schema.Attribute.Date;
+    project_highlights: Schema.Attribute.JSON;
+    project_phase: Schema.Attribute.Enumeration<
+      [
+        'planning',
+        'approval',
+        'construction',
+        'nearing_completion',
+        'completed',
+      ]
+    >;
+    rera_number: Schema.Attribute.String;
+  };
+}
+
+export interface ProjectSalesMetrics extends Struct.ComponentSchema {
+  collectionName: 'components_project_sales_metrics';
+  info: {
+    displayName: 'sales-metrics';
+  };
+  attributes: {
+    available_units: Schema.Attribute.Integer;
+    average_selling_price: Schema.Attribute.Integer;
+    blocked_units: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    last_updated: Schema.Attribute.DateTime;
+    sales_percentage: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
+    sales_velocity: Schema.Attribute.Decimal;
+    sold_units: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    target_revenue: Schema.Attribute.Decimal;
+    total_inventory: Schema.Attribute.Integer;
+    total_revenue: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
+  };
+}
+
 export interface SecurityCameraConfiguration extends Struct.ComponentSchema {
   collectionName: 'components_security_camera_configurations';
   info: {
@@ -329,6 +377,8 @@ declare module '@strapi/strapi' {
       'media.media-gallery': MediaMediaGallery;
       'price-details.financial': PriceDetailsFinancial;
       'price-details.payment-details': PriceDetailsPaymentDetails;
+      'project.project-details': ProjectProjectDetails;
+      'project.sales-metrics': ProjectSalesMetrics;
       'security.camera-configuration': SecurityCameraConfiguration;
       'security.qr-code-details': SecurityQrCodeDetails;
       'system.audit-trail': SystemAuditTrail;
