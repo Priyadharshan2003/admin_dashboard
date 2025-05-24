@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "guests",
+  "info": {
+    "singularName": "guest",
+    "pluralName": "guests",
+    "displayName": "Guest",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "otp_verified": {
+      "type": "boolean"
+    },
+    "user_status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    },
+    "user_created_at": {
+      "type": "datetime"
+    },
+    "personal_details": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user-profile-details.guest-profile"
+    }
+  }
+}

@@ -362,6 +362,57 @@ export interface SystemStatusTracking extends Struct.ComponentSchema {
   };
 }
 
+export interface UserProfileDetailsClientProfile
+  extends Struct.ComponentSchema {
+  collectionName: 'components_user_profile_details_client_profiles';
+  info: {
+    description: '';
+    displayName: 'client profile';
+  };
+  attributes: {
+    DOB: Schema.Attribute.Date;
+    Gender: Schema.Attribute.Enumeration<['Male', 'Female']>;
+    google_id: Schema.Attribute.String;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    Profile_PIc: Schema.Attribute.Media<'images' | 'files'>;
+  };
+}
+
+export interface UserProfileDetailsGuestProfile extends Struct.ComponentSchema {
+  collectionName: 'components_user_profile_details_guest_profiles';
+  info: {
+    description: '';
+    displayName: 'Guest Profile';
+  };
+  attributes: {
+    DOB: Schema.Attribute.Date;
+    Gender: Schema.Attribute.Enumeration<['Male', 'Female']>;
+    phone: Schema.Attribute.String;
+    Profile_PIc: Schema.Attribute.Media<'images' | 'files'>;
+    username: Schema.Attribute.String;
+  };
+}
+
+export interface UserProfileDetailsManagerProfile
+  extends Struct.ComponentSchema {
+  collectionName: 'components_user_profile_details_manager_profiles';
+  info: {
+    description: '';
+    displayName: 'Manager Profile';
+  };
+  attributes: {
+    active_status: Schema.Attribute.Enumeration<
+      ['active', 'inactive', 'suspended']
+    >;
+    DOB: Schema.Attribute.Date;
+    email: Schema.Attribute.Email;
+    Gender: Schema.Attribute.Enumeration<['male', 'female']>;
+    phone: Schema.Attribute.String;
+    Profile_PIc: Schema.Attribute.Media<'images' | 'files'>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -381,6 +432,9 @@ declare module '@strapi/strapi' {
       'security.qr-code-details': SecurityQrCodeDetails;
       'system.audit-trail': SystemAuditTrail;
       'system.status-tracking': SystemStatusTracking;
+      'user-profile-details.client-profile': UserProfileDetailsClientProfile;
+      'user-profile-details.guest-profile': UserProfileDetailsGuestProfile;
+      'user-profile-details.manager-profile': UserProfileDetailsManagerProfile;
     }
   }
 }

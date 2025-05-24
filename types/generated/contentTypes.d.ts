@@ -463,6 +463,101 @@ export interface ApiChatMessageChatMessage extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiClientClient extends Struct.CollectionTypeSchema {
+  collectionName: 'clients';
+  info: {
+    description: '';
+    displayName: 'Client';
+    pluralName: 'clients';
+    singularName: 'client';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::client.client'
+    > &
+      Schema.Attribute.Private;
+    personal_details: Schema.Attribute.Component<
+      'user-profile-details.client-profile',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGuestGuest extends Struct.CollectionTypeSchema {
+  collectionName: 'guests';
+  info: {
+    description: '';
+    displayName: 'Guest';
+    pluralName: 'guests';
+    singularName: 'guest';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::guest.guest'> &
+      Schema.Attribute.Private;
+    otp_verified: Schema.Attribute.Boolean;
+    personal_details: Schema.Attribute.Component<
+      'user-profile-details.guest-profile',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user_created_at: Schema.Attribute.DateTime;
+    user_status: Schema.Attribute.Enumeration<['active', 'inactive']>;
+  };
+}
+
+export interface ApiManagerManager extends Struct.CollectionTypeSchema {
+  collectionName: 'managers';
+  info: {
+    displayName: 'manager';
+    pluralName: 'managers';
+    singularName: 'manager';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::manager.manager'
+    > &
+      Schema.Attribute.Private;
+    personal_details: Schema.Attribute.Component<
+      'user-profile-details.manager-profile',
+      false
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNotificationNotification
   extends Struct.CollectionTypeSchema {
   collectionName: 'notifications';
@@ -1154,6 +1249,9 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::book-visit.book-visit': ApiBookVisitBookVisit;
       'api::chat-message.chat-message': ApiChatMessageChatMessage;
+      'api::client.client': ApiClientClient;
+      'api::guest.guest': ApiGuestGuest;
+      'api::manager.manager': ApiManagerManager;
       'api::notification.notification': ApiNotificationNotification;
       'api::plot.plot': ApiPlotPlot;
       'api::project.project': ApiProjectProject;

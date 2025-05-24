@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_user_profile_details_manager_profiles",
+  "info": {
+    "displayName": "Manager Profile",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "active_status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "inactive",
+        "suspended"
+      ]
+    },
+    "Gender": {
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female"
+      ]
+    },
+    "DOB": {
+      "type": "date"
+    },
+    "Profile_PIc": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

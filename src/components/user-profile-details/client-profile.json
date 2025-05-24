@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_user_profile_details_client_profiles",
+  "info": {
+    "displayName": "client profile",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "google_id": {
+      "type": "string"
+    },
+    "Gender": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Female"
+      ]
+    },
+    "DOB": {
+      "type": "date"
+    },
+    "Profile_PIc": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

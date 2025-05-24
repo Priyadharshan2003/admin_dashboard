@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clients",
+  "info": {
+    "singularName": "client",
+    "pluralName": "clients",
+    "displayName": "Client",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "personal_details": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user-profile-details.client-profile"
+    }
+  }
+}

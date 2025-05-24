@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "managers",
+  "info": {
+    "singularName": "manager",
+    "pluralName": "managers",
+    "displayName": "manager"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "personal_details": {
+      "type": "component",
+      "repeatable": false,
+      "component": "user-profile-details.manager-profile"
+    }
+  }
+}
