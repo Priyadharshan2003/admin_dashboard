@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_communication_notification_settings",
+  "info": {
+    "displayName": "notification-settings"
+  },
+  "options": {},
+  "attributes": {
+    "email_notifications": {
+      "type": "boolean",
+      "default": true
+    },
+    "sms_notifications": {
+      "type": "boolean",
+      "default": true
+    },
+    "push_notifications": {
+      "type": "boolean",
+      "default": true
+    },
+    "whatsapp_notifications": {
+      "type": "boolean",
+      "default": false
+    },
+    "notification_frequency": {
+      "type": "enumeration",
+      "enum": [
+        "immediate",
+        "daily",
+        "weekly",
+        "monthly"
+      ]
+    },
+    "quiet_hours_start": {
+      "type": "time"
+    },
+    "quiet_hours_end": {
+      "type": "time"
+    },
+    "notification_categories": {
+      "type": "json"
+    }
+  }
+}

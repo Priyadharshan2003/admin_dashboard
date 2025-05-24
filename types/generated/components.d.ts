@@ -1,5 +1,48 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CommunicationFeedbackRating extends Struct.ComponentSchema {
+  collectionName: 'components_communication_feedback_ratings';
+  info: {
+    displayName: 'feedback-rating';
+  };
+  attributes: {
+    communication_rating: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<5>;
+    facility_rating: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<5>;
+    feedback_comments: Schema.Attribute.Blocks;
+    feedback_date: Schema.Attribute.DateTime;
+    follow_up_required: Schema.Attribute.Boolean;
+    overall_rating: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<5>;
+    recommend_to_others: Schema.Attribute.Boolean;
+    service_rating: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<5>;
+    suggestions: Schema.Attribute.Blocks;
+  };
+}
+
+export interface CommunicationNotificationSettings
+  extends Struct.ComponentSchema {
+  collectionName: 'components_communication_notification_settings';
+  info: {
+    displayName: 'notification-settings';
+  };
+  attributes: {
+    email_notifications: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    notification_categories: Schema.Attribute.JSON;
+    notification_frequency: Schema.Attribute.Enumeration<
+      ['immediate', 'daily', 'weekly', 'monthly']
+    >;
+    push_notifications: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    quiet_hours_end: Schema.Attribute.Time;
+    quiet_hours_start: Schema.Attribute.Time;
+    sms_notifications: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    whatsapp_notifications: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+  };
+}
+
 export interface ContactAddress extends Struct.ComponentSchema {
   collectionName: 'components_contact_addresses';
   info: {
@@ -223,6 +266,8 @@ export interface SystemStatusTracking extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'communication.feedback-rating': CommunicationFeedbackRating;
+      'communication.notification-settings': CommunicationNotificationSettings;
       'contact.address': ContactAddress;
       'contact.contact-details': ContactContactDetails;
       'location.location-details': LocationLocationDetails;
